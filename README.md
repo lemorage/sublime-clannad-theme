@@ -1,4 +1,4 @@
-# sublime-clannad-theme
+# Sublime-Clannad-Theme
 > An elegant colour scheme for [Sublime Text](http://sublimetext.com)!
 
 ## Preview
