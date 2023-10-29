@@ -6,17 +6,61 @@ on:
       - 'v[0-9]+.*'
 
 jobs:
-  release:
+  # Extract Version from Tag
+  prepare:
     runs-on: ubuntu-latest
-
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
-
     - name: Extract version from tag
       id: get_version
       run: echo "VERSION=${GITHUB_REF#refs/tags/v}" >> $GITHUB_ENV
 
+  Windows_Publish:
+    needs: prepare
+    runs-on: windows-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+    - name: Build and Package for Windows
+      run: |
+        $exclusions = @('.git\*')
+        Compress-Archive -Path .\* -DestinationPath clannad_theme_windows_${{ steps.get_version.outputs.VERSION }}.zip -Exclude $exclusions
+    - name: Upload Windows Artifact
+      uses: actions/upload-artifact@master
+      with:
+        name: windows-artifact
+        path: ./clannad_theme_windows_${{ steps.get_version.outputs.VERSION }}.zip
+
+  Unix_Archive:
+    needs: prepare
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+    - name: Build and Package for MacOS and Linux
+      run: |
+        zip -r clannad_theme_macos_${{ steps.get_version.outputs.VERSION }}.zip . -x .git/\*
+        tar czvf clannad_theme_linux_${{ steps.get_version.outputs.VERSION }}.tar.gz --exclude='./.git*' .
+    - name: Upload Unix Artifacts
+      uses: actions/upload-artifact@master
+      with:
+        name: unix-artifacts
+        path: |
+          ./clannad_theme_macos_${{ steps.get_version.outputs.VERSION }}.zip
+          ./clannad_theme_linux_${{ steps.get_version.outputs.VERSION }}.tar.gz
+
+  Deploy_Artifacts:
+    needs: [Windows_Publish, Unix_Archive]
+    runs-on: ubuntu-latest
+    steps:
+    - name: Download All Artifacts
+      uses: actions/download-artifact@v2
+      with:
+        name: windows-artifact
+    - uses: actions/download-artifact@v2
+      with:
+        name: unix-artifacts
     - name: Create Release
       id: create_release
       uses: actions/create-release@v1
@@ -26,61 +70,9 @@ jobs:
         tag_name: ${{ github.ref }}
         draft: false
         prerelease: false
+    - name: Upload All Release Assets
+      uses: ncipollo/release-action@v1
+      with:
+        artifacts: "clannad_theme_windows_${{ steps.get_version.outputs.VERSION }}.zip, clannad_theme_macos_${{ steps.get_version.outputs.VERSION }}.zip, clannad_theme_linux_${{ steps.get_version.outputs.VERSION }}.tar.gz"
+        token: ${{ secrets.GITHUB_TOKEN }}
         allowUpdates: true
-
-    outputs:
-      upload_url: ${{ steps.create_release.outputs.upload_url }}
-
-  unix-archive:
-    needs: release
-    runs-on: ubuntu-latest
-
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
-
-    - name: Archive software (ZIP)
-      run: zip -r clannad_theme_macos_${{ steps.get_version.outputs.VERSION }}.zip . -x .git/\*
-
-    - name: Archive software (TAR.GZ)
-      run: tar czvf clannad_theme_linux_${{ steps.get_version.outputs.VERSION }}.tar.gz --exclude='./.git*' .
-
-    - name: Upload Release Asset (ZIP)
-      uses: actions/upload-release-asset@v1
-      with:
-        upload_url: ${{ needs.release.outputs.upload_url }}
-        asset_path: ./clannad_theme_macos_${{ steps.get_version.outputs.VERSION }}.zip
-        asset_name: clannad_theme_macos_${{ steps.get_version.outputs.VERSION }}.zip
-        asset_content_type: application/zip
-        token: ${{ secrets.GITHUB_TOKEN }}
-
-    - name: Upload Release Asset (TAR.GZ)
-      uses: actions/upload-release-asset@v1
-      with:
-        upload_url: ${{ needs.release.outputs.upload_url }}
-        asset_path: ./clannad_theme_linux_${{ steps.get_version.outputs.VERSION }}.tar.gz
-        asset_name: clannad_theme_linux_${{ steps.get_version.outputs.VERSION }}.tar.gz
-        asset_content_type: application/gzip
-        token: ${{ secrets.GITHUB_TOKEN }}
-
-  windows-release:
-    needs: release
-    runs-on: windows-latest
-
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
-
-    - name: Archive software for Windows (ZIP)
-      run: |
-          $exclusions = @('.git\*')
-          Compress-Archive -Path .\* -DestinationPath clannad_theme_windows_${{ steps.get_version.outputs.VERSION }}.zip -Exclude $exclusions
-
-    - name: Upload Release Asset (Windows ZIP)
-      uses: actions/upload-release-asset@v1
-      with:
-        upload_url: ${{ needs.release.outputs.upload_url }}
-        asset_path: ./clannad_theme_windows_${{ steps.get_version.outputs.VERSION }}.zip
-        asset_name: clannad_theme_windows_${{ steps.get_version.outputs.VERSION }}.zip
-        asset_content_type: application/zip
-        token: ${{ secrets.GITHUB_TOKEN }}
