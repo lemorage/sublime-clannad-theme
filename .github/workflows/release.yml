@@ -21,36 +21,48 @@ jobs:
     runs-on: windows-latest
     steps:
     - name: Checkout code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
     - name: Build and Package for Windows
       run: |
         $items = Get-ChildItem -Recurse . | Where-Object { $_.FullName -notlike '*.git*' } | Select-Object -ExpandProperty FullName
-        Compress-Archive -Path $items -DestinationPath clannad_theme_windows_${{ steps.get_version.outputs.VERSION }}.zip -Force
- 
+        $WINFILE = "clannad_theme_windows_${env:VERSION}.zip"
+        Compress-Archive -Path $items -DestinationPath $WINFILE -Force
     - name: Upload Windows Artifact
       uses: actions/upload-artifact@master
       with:
         name: windows-artifact
-        path: ./clannad_theme_windows_${{ steps.get_version.outputs.VERSION }}.zip
+        path: ./${{ env.WINFILE }}
+    - name: Print Version
+      run: |
+        echo "VERSION: ${{ env.VERSION }}"
+        echo "WINFILE: ${{ env.WINFILE }}"
 
   Unix_Archive:
     needs: prepare
     runs-on: ubuntu-latest
     steps:
     - name: Checkout code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
     - name: Build and Package for MacOS and Linux
       run: |
-        zip -r clannad_theme_macos_${{ steps.get_version.outputs.VERSION }}.zip . -x .git/\*
-        touch clannad_theme_linux_${{ steps.get_version.outputs.VERSION }}.tar.gz
-        tar --exclude=clannad_theme_linux_${{ steps.get_version.outputs.VERSION }}.tar.gz -zcvf clannad_theme_linux_${{ steps.get_version.outputs.VERSION }}.tar.gz .
+        VERSION=$VERSION
+        MACFILE="clannad_theme_macos_$VERSION.zip"
+        LINUXFILE="clannad_theme_linux_$VERSION.tar.gz"
+        zip -r $MACFILE . -x .git/\*
+        touch $LINUXFILE
+        tar --exclude=$LINUXFILE --exclude=$MACFILE -zcvf $LINUXFILE .
     - name: Upload Unix Artifacts
       uses: actions/upload-artifact@master
       with:
         name: unix-artifacts
         path: |
-          ./clannad_theme_macos_${{ steps.get_version.outputs.VERSION }}.zip
-          ./clannad_theme_linux_${{ steps.get_version.outputs.VERSION }}.tar.gz
+          ./${{ env.MACFILE }}
+          ./${{ env.LINUXFILE }}
+    - name: Print Version
+      run: |
+        echo "VERSION: ${{ env.VERSION }}"
+        echo "MACFILE: ${{ env.MACFILE }}"
+        echo "LINUXFILE: ${{ env.LINUXFILE }}"
 
   Deploy_Artifacts:
     needs: [Windows_Publish, Unix_Archive]
@@ -63,13 +75,18 @@ jobs:
     - uses: actions/download-artifact@v2
       with:
         name: unix-artifacts
+    - name: Set env variables for filenames
+      run: |
+        echo "WINFILE=clannad_theme_windows_$VERSION.zip" >> $GITHUB_ENV
+        echo "MACFILE=clannad_theme_macos_$VERSION.zip" >> $GITHUB_ENV
+        echo "LINUXFILE=clannad_theme_linux_$VERSION.tar.gz" >> $GITHUB_ENV
     - name: Create Release and Upload Artifacts
       uses: ncipollo/release-action@v1.13.0
       with:
-        name: "Release ${{ github.ref }}"
+        name: "Release ${{ env.VERSION }}"
         tag: ${{ github.ref }}
         draft: false
         prerelease: false
-        artifacts: "clannad_theme_windows_${{ steps.get_version.outputs.VERSION }}.zip, clannad_theme_macos_${{ steps.get_version.outputs.VERSION }}.zip, clannad_theme_linux_${{ steps.get_version.outputs.VERSION }}.tar.gz"
+        artifacts: "${{ env.WINFILE }}, ${{ env.MACFILE }}, ${{ env.LINUXFILE }}"
         token: ${{ secrets.GITHUB_TOKEN }}
         allowUpdates: true
