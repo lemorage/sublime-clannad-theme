@@ -72,7 +72,7 @@ Code licensed under the BSD-2-Clause license
             <key>settings</key>
             <dict>
                 <key>foreground</key>
-                <string>#B4CAD9</string>
+                <string>#27c5abea</string>
             </dict>
         </dict>
         <!-- $BEGIN Specific YAML String Rule -->
