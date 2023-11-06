@@ -5,15 +5,20 @@
     "variables": {
         // Uniform specified colors
         "apricot": "#F8B697",
-        "gray": "#999999",
-        "lavendar": "#DBB3EF",
-        "orange": "FFAA88",
+        "azure": "#89BDFF",
         "cloudedSilver": "#F8F8F2A5",
+        "cornflower": "#535CE6",
+        "gray": "#999999",
+        "lavendar": "#E0C5FF",
+        "lilac": "#DBB3EF",
+        "orange": "#FFAA88",
+        "paper": "#FFFFFF",
 
         // UI elements
         "background": "#000008",
         "foreground": "#E3E0E0",
         "caret": "#F0C9A0",
+        "blockCaret": "#E8DBA5",
         "invisibles": "#3B3A32",
         "lineHighlight": "#3E3D32",
         "selection": "#49483E",
@@ -32,11 +37,10 @@
         "gutterForegroundHighlight": "color(var(gray) l(75%))",
 
         // Language-specific colors
-        "stringColor": "#27c5ab",
+        "stringColor": "#6EE7D6",
         "comment": "var(gray)",
-        "libraryConstant": "#E0C5FF",
-        "libraryClassType": "#4BA5F7",
-        "libraryVariable": "#89BDFF",
+        "libraryClassType": "#C7F6FE",
+        "libraryVariable": "var(azure)",
         "invalidBackground": "#F2AEEE0A",
         "invalidForeground": "#F8F8F0",
         "invalidDeprecatedBackground": "#BD93F9",
@@ -58,12 +62,13 @@
         "markdownQuote": "#AAFFDD",
         "markdownStrikethrough": "#FF9999",
         "yamlKey": "#FFDD67",
+        "yamlString": "#68CAA4",
         "yamlNumber": "#6EE7D6",
         "yamlBoolean": "#A2D5F2",
         "yamlAnchorAlias": "#FFA2E0",
         "yamlComment": "#E0985C",
         "yamlDocumentSeparator": "#FFBB86",
-        "tomlStringValue": "#BFEAEA",
+        "tomlString": "#BFEAEA",
         "tomlNumber": "#7AA2E6",
         "tomlComment": "#B0B0B0",
         "tomlBoolean": "#BFA8FF",
@@ -72,8 +77,9 @@
     },
     "globals": {
         "background": "var(background)",
-        "foreground": "var(foreground)",
+        "foreground": "#9999FF",
         "caret": "var(caret)",
+        "block_caret": "var(blockCaret)",
         "invisibles": "color(var(invisibles) s(70%) l(80%) a(80%))",
         "line_highlight": "var(lineHighlight)",
         "selection": "var(selection)",
@@ -100,7 +106,11 @@
         },
         {
             "scope": "string",
-            "foreground": "color(var(stringColor) s(24%) l(66%) a(94%))"
+            "foreground": "var(foreground)",
+        },
+        {
+            "scope": "string.regexp constant.character constant.other",
+            "foreground": "var(invalidDeprecatedBackground)"
         },
         {
             "scope": "constant.numeric",
@@ -111,17 +121,33 @@
             "foreground": "#d3b5ff"
         },
         {
-            "scope": "constant.character constant.other",
-            "foreground": "#bd93f9"
+            "scope": "keyword",
+            "foreground": "#ccecb2",
         },
         {
             "scope": "variable",
-            "foreground": "#89bdff",
+            "foreground": "var(azure)",
             "font_style": "Consolas"
         },
         {
-            "scope": "keyword - keyword.operator, keyword.operator.word, keyword.declaration.function, keyword.declaration.class",
-            "foreground": "#ccecb2",
+            "scope": "variable.member",
+            "foreground": "var(paper)"
+        },
+        {
+            "scope": "variable.other.member",
+            "foreground": "var(cornflower)"
+        },
+        {
+            "scope": "variable.parameter",
+            "foreground": "var(cornflower)"
+        },
+        {
+            "scope": "variable.language",
+            "foreground": "var(cornflower)"
+        }, 
+        {
+            "scope": "variable.function, variable.annotation",
+            "foreground": "#e0abce"
         },
         {
             "scope": "meta.tag declaration.tag",
@@ -129,18 +155,24 @@
             "font_style": "Consolas"
         },
         {
-            "name": "Punctuations",
-            "scope": "punctuation.definition - punctuation.definition.numeric.base - string punctuation - constant.character.escape - variable punctuation - keyword.operator - comment punctuation - markup.inserted punctuation - markup.deleted punctuation - storage punctuation - invalid punctuation",
+            "scope": "punctuation - punctuation.definition.string - punctuation.definition.character - comment punctuation",
+            "foreground": "#fff000"
+        },
+        {
+            "scope": "punctuation.section",
+            "foreground": "var(paper)"
+        },
+        {
+            "scope": "punctuation.definition.tag",
             "foreground": "var(apricot)"
         },
         {
-            "name": "Punctuation - Ampersand",
-            "scope": "punctuation.definition.ampersand",
-            "foreground": "var(lavendar)"
+            "scope": "punctuation.accessor",
+            "foreground": "#ccccff"
         },
         {
             "scope": "storage",
-            "foreground": "var(lavendar)",
+            "foreground": "var(lilac)",
             "font_style": "Monaco"
         },
         {
@@ -149,19 +181,14 @@
             "font_style": "italic"
         },
         {
-            "name": "Accessor",
-            "scope": "punctuation.accessor",
-            "foreground": "#ccccff"
-        },
-        {
-            "scope": "entity.name - (entity.name.section | entity.name.tag | entity.name.label)",
-            "foreground": "#csf6"
+            "scope": "entity.name - markup.heading",
+            "foreground": "#31d691"
         },
 
         // New scope definitions
         {
             "scope": "entity.name.annotation",
-            "foreground": "var(libraryConstant)",
+            "foreground": "var(lavendar)",
             "font_style": "underline"
         },
         {
@@ -171,17 +198,17 @@
         },
         {
             "scope": "entity.other.inherited-class",
-            "foreground": "var(libraryConstant)",
+            "foreground": "var(lavendar)",
             "font_style": "italic underline"
         },
         {
             "scope": "entity.name.function",
-            "foreground": "var(libraryClassType)",
+            "foreground": "#4ba5f7",
             "font_style": "Consolas"
         },
         {
             "scope": "variable.parameter",
-            "foreground": "var(libraryVariable)",
+            "foreground": "var(azure)",
             "font_style": "italic"
         },
         {
@@ -194,12 +221,13 @@
             "foreground": "#bad8a2"
         },
         {
-            "scope": "support.function",
-            "foreground": "var(foreground)"
+            "scope": "support.function, support.macro",
+            "foreground": "#efdeac",
+            "font_style": "italic"
         },
         {
             "scope": "support.constant",
-            "foreground": "var(libraryConstant)"
+            "foreground": "var(lavendar)"
         },
         {
             "scope": "support.type, support.class",
@@ -300,11 +328,11 @@
         // New scope definitions for YAML
         {
             "scope": "entity.name.tag.yaml",
-            "foreground": "#ffdd67"
+            "foreground": "var(yamlKey)"
         },
         {
             "scope": "source.yaml string.unquoted",
-            "foreground": "#68caa4"
+            "foreground": "var(yamlString)"
         },
         {
             "scope": "source.yaml constant.numeric",
@@ -331,7 +359,7 @@
         // New scope definitions for TOML
         {
             "scope": "source.toml string",
-            "foreground": "var(tomlStringValue)"
+            "foreground": "var(tomlString)"
         },
         {
             "scope": "source.toml constant.numeric",
