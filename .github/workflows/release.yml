@@ -1,7 +1,7 @@
 name: Create Release and Upload Assets
 
 env:
-  VERSION: 0.2.0
+  VERSION: 0.3.0
 
 on:
   push:
@@ -86,7 +86,7 @@ jobs:
     - name: Create Release and Upload Artifacts
       uses: ncipollo/release-action@v1.13.0
       with:
-        name: "Release ${{ env.VERSION }}"
+        name: "${{ env.VERSION }}"
         tag: ${{ github.ref }}
         draft: false
         prerelease: false
