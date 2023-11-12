@@ -1,5 +1,5 @@
 # Sublime-Clannad-Theme
-> An elegant colour scheme for [Sublime Text](http://sublimetext.com)!
+> An elegant colour scheme for [Sublime Text 4](http://sublimetext.com)!
 
 ## Preview
 <div align='center'>
@@ -53,4 +53,4 @@
 * Go to `Preferences` -> `Select Colour Scheme...` -> Choose the *Clannad Theme*.
 
 ## License
-[BSD-2-Clause License](./LICENSE) © Clannad Theme
+[BSD-2-Clause License](./LICENSE) © 2023 Clannad Theme
