@@ -1,0 +1,21 @@
+{
+    "schema_version": "3.0.0",
+    "packages": [
+        {
+            "name": "Clannad",
+            "description": "A dark-based elegant color scheme inspired by the Clannad anime",
+            "author": "Miao (lemorage)",
+            "details": "https://github.com/lemorage/sublime-clannad-theme/",
+            "issues": "https://github.com/lemorage/sublime-clannad-theme/issues",
+            "labels": ["color scheme"],
+            "releases": [
+                {
+                    "version": "0.3.0",
+                    "sublime_text": "*",
+                    "platforms": ["osx", "linux", "windows"],
+                    "tags": true
+                }
+            ]
+        }
+    ]
+}
