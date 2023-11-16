@@ -1,5 +1,9 @@
 # Sublime-Clannad-Theme
-> An elegant colour scheme for [Sublime Text 4](http://sublimetext.com)!
+Hey there! 🌈 Meet the *Clannad Theme* for [Sublime Text 4](http://sublimetext.com) – your ticket to a coding experience that's not only comfy but easy on the eyes too. Taking cues from the beloved anime series '*Clannad*', this color scheme brings a dash of tranquility and readability to your coding haven. Let's make coding sessions as chill as a lazy Sunday afternoon! 😎✨
+
+## Why Clannad Theme?
+
+Choosing a color scheme for your coding environment is a personal decision, and the *Clannad Theme* aims to provide a refreshing alternative for those seeking a blend of aesthetics and functionality. With a focus on simplicity and elegance, this theme strives to make your code readable and visually delightful.
 
 ## Preview
 <div align='center'>
@@ -7,50 +11,60 @@
   
   ![C](https://img.shields.io/badge/c-%2300599C.svg?style=for-the-badge&logo=c&logoColor=white)
   
-  <img width="910" alt="c_clannad_example" src="https://user-images.githubusercontent.com/88943827/157767883-b22f3f55-ea08-408a-8bd8-5da51300e551.png">
-
-<br>
-  
-  ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
-  
-  <img width="883" alt="html_clannad_example" src="https://user-images.githubusercontent.com/88943827/157768073-d3f0887e-45ad-4294-8408-70706f018300.png">
-
-<br>
-  
-  ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
-  
-  <img width="883" alt="css_clannad_example" src="https://user-images.githubusercontent.com/88943827/157768163-6cb82586-26f2-460e-aa62-2eef838328a5.png">
 
 <br>
   
   ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
   
-  <img width="883" alt="js_clannad_example" src="https://user-images.githubusercontent.com/88943827/157768263-4a66936a-f00a-4001-a5c0-8bd0184ba477.png">
 
 <br>
   
   ![Java](https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=java&logoColor=white)
   
-  <img width="883" alt="java_clannad_example" src="https://user-images.githubusercontent.com/88943827/157768328-77745e1b-b22a-4330-914b-0929166ecb7a.png">
 
 <br>
   
   ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
   
-  <img width="883" alt="python_clannad_example" src="https://user-images.githubusercontent.com/88943827/157768383-ca65b01e-3389-481d-8a5a-be6b41935d00.png">
 
 <br>
   
-  ![Ruby](https://img.shields.io/badge/ruby-%23CC342D.svg?style=for-the-badge&logo=ruby&logoColor=white)
+  ![Go](https://img.shields.io/badge/go-%2300ADD8.svg?style=for-the-badge&logo=go&logoColor=white)
   
-  <img width="882" alt="ruby_clannad_example" src="https://user-images.githubusercontent.com/88943827/157768433-4aef48b6-3f21-4178-a548-710c4430e4c2.png">
+
+<br>
+  
+  ![Rust](https://img.shields.io/badge/rust-%23000000.svg?style=for-the-badge&logo=rust&logoColor=white)
+  
+
+<br>
+  
+  ![Markdown](https://img.shields.io/badge/markdown-%23000000.svg?style=for-the-badge&logo=markdown&logoColor=white)
+  
 
 </div>
 
 ## Installation
-* You can locate your Sublime Text Packages directory by clicking the menu: `Preferences` -> `Browse Packages...`.
-* After downloading the colour scheme file, put it into your Sublime Text Packages directory.
-* Go to `Preferences` -> `Select Colour Scheme...` -> Choose the *Clannad Theme*.
+1. **Locate Sublime Text Packages Directory:**
+   - Open Sublime Text.
+   - Click on `Preferences` -> `Browse Packages...`.
+
+2. **Download the Color Scheme File:**
+   - Visit the [releases page](https://github.com/lemorage/sublime-clannad-theme/releases).
+   - Download the latest release of the `Clannad.sublime-color-scheme` file.
+
+3. **Install the Color Scheme:**
+   - Move the downloaded file into the opened Sublime Text Packages directory.
+
+4. **Apply the Color Scheme:**
+   - Go to `Preferences` -> `Select Color Scheme...`.
+   - Choose the *Clannad Theme* from the available options.
+
+5. **Enjoy a Pleasing Coding Experience!**
+
+## Contributing
+
+Your contributions and suggestions are welcome! If you encounter any issues or have ideas for improvements, please [open an issue](https://github.com/lemorage/sublime-clannad-theme/issues) or submit a pull request. Your feedback helps make this color scheme better for the community.
 
 ## License
 [BSD-2-Clause License](./LICENSE) © 2023 Clannad Theme
