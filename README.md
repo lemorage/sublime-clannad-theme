@@ -1,12 +1,6 @@
 # Sublime-Clannad-Theme
 > Hey! 🌈 Meet the Clannad Theme for [Sublime Text 4](http://sublimetext.com) – cozy coding with a dash of tranquility from the beloved anime series. Let's make coding as chill as a lazy Sunday afternoon! 😎✨
 
-## Why Clannad Theme?
-
-- Choosing a color scheme for your coding environment is a personal decision, and this theme offers a unique twist, a refreshing alternative for those who want their coding environment to reflect their personal style.
-- We believe in keeping it simple yet classy. The theme focuses on simplicity and elegance, making your code not only easy to read but also a delight for the eyes.
-- It's not just about looks; It all comes down to a smooth transition between style and utility. The Clannad Theme ensures that your coding experience is not only visually pleasing but also practical and efficient.
-
 ## Preview
 
 ### Clannad Theme
@@ -56,6 +50,18 @@
         -   Additionally, you might notice there is also a slightly older color scheme `ClannadLegacy`, which is available for your use. However, please be aware that this color scheme may not receive frequent updates and is maintained for legacy purposes.
 
 5. **Enjoy a Pleasing Coding Experience!**
+
+## Why Clannad Theme?
+
+- Choosing a color scheme for your coding environment is a personal decision, and this theme offers a unique twist, a refreshing alternative for those who want their coding environment to reflect their personal style.
+- We believe in keeping it simple yet classy. The theme focuses on simplicity and elegance, making your code not only easy to read but also a delight for the eyes.
+- It's not just about looks; It all comes down to a smooth transition between style and utility. The Clannad Theme ensures that your coding experience is not only visually pleasing but also practical and efficient.
+
+## Inspirations
+This theme draws inspiration from the following sources. Credits to these projects and their authors.
+1. [The Built-in Color Schemes in DrRacket](https://docs.racket-lang.org/drracket/color-scheme.html)
+
+2. [Github Sublime Theme](https://github.com/mauroreisvieira/github-sublime-theme)
 
 ## Contributing
 
