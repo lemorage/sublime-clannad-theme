@@ -34,7 +34,7 @@
         {
             "class": "scroll_tabs_left_button",
             "layer0.opacity": {
-                "target": 0.5,
+                "target": 3,
                 "speed": 1,
             },
             "layer0.tint": "var(foreground)",
@@ -46,7 +46,7 @@
         {
             "class": "scroll_tabs_right_button",
             "layer0.opacity": {
-                "target": 0.5,
+                "target": 3,
                 "speed": 1,
             },
             "layer0.tint": "var(foreground)",
@@ -59,7 +59,7 @@
             "class": "new_tab_button",
             "layer0.tint": "var(foreground)",
             "layer0.opacity": {
-                "target": 0.5,
+                "target": 3,
                 "speed": 1,
             },
             "content_margin": [
@@ -73,7 +73,7 @@
             "class": "show_tabs_dropdown_button",
             "layer0.tint": "var(foreground)",
             "layer0.opacity": {
-                "target": 0.5,
+                "target": 3,
                 "speed": 1,
             },
             "content_margin": [
@@ -176,16 +176,16 @@
             "class": "sidebar_heading",
             "fg": "var(foreground)",
             "font.size": "var(fontsize)",
-            "font.bold": false
+            "font.bold": false,
         },
         {
             "class": "sidebar_tree",
             "row_padding": [
                 15,
-                4
+                6
             ],
             "indent": 24,
-            "indent_offset": 8,
+            "indent_offset": 12,
             "indent_top_level": false,
             "spacer_rows": true
         },
@@ -525,6 +525,13 @@
             "class": "auto_complete_kind_name_label",
             "font.italic": true,
             "border_color": "color(var(accent) a(0.8))"
+        },
+        {
+            "class": "auto_complete_details",
+            "font.face": "var(fontface)",
+            "font.size": "var(fontsize)",
+            "color": "#70dfe0",
+            "link_color": "#ffffff",
         },
         {
             "class": "table_row",
