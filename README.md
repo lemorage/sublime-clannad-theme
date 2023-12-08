@@ -29,6 +29,15 @@
 </div>
 
 ## Installation
+### Option 1: Using Package Control (Recommended)
+1. Open Sublime Text.
+2. Press the following key combination:
+    - **Windows:** `Ctrl + Shift + P`
+    - **Mac:** `Cmd + Shift + P`
+3. Type `Package Control: Install Package` and press `Enter`.
+4. Search for `Clannad Theme` and install it.
+
+### Option 2: Manual Installation
 1. **Locate Sublime Text Packages Directory:**
     - Open Sublime Text.
     - Click on `Preferences` -> `Browse Packages...`.
@@ -40,16 +49,17 @@
 3. **Install the Theme:**
     - Move the downloaded package into the Sublime Text Packages directory.
 
-4. **Apply the Theme or Color Scheme:**
-    1. Theme
-        -   Go to `Preferences` -> `Select Theme...` or Go to `Tools` -> `Command Palette` -> `UI: Select Theme`
-        -   Choose the *Clannad Theme* from the available options.
-    2. Color Scheme
-        -   Go to `Preferences` -> `Select Color Scheme...` or Go to `Tools` -> `Command Palette` -> `UI: Select Color Scheme`
-        -   Choose the *Clannad Color Scheme* from the available options.
-        -   Additionally, you might notice there is also a slightly older color scheme `ClannadLegacy`, which is available for your use. However, please be aware that this color scheme may not receive frequent updates and is maintained for legacy purposes.
+## Applying the Theme or Color Scheme
+1. **Apply the Theme:**
+    - Go to `Preferences` -> `Select Theme...` or `Tools` -> `Command Palette` -> `UI: Select Theme`.
+    - Choose the *Clannad Theme* from the available options.
 
-5. **Enjoy a Pleasing Coding Experience!**
+2. **Apply the Color Scheme:**
+    - Go to `Preferences` -> `Select Color Scheme...` or `Tools` -> `Command Palette` -> `UI: Select Color Scheme`.
+    - Choose the *Clannad Color Scheme* from the available options.
+    - Additionally, you might notice there is also a slightly older color scheme `ClannadLegacy`, which is available for your use. However, please be aware that this color scheme may not receive frequent updates and is maintained for legacy purposes.
+
+3. **Enjoy a Pleasing Coding Experience!**
 
 ## Why Clannad Theme?
 
